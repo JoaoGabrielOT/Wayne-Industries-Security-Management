@@ -13,7 +13,6 @@ Wayne Industries internal security and resource management platform for Gotham C
 
 ### Project Structure
 ```
-migration-reference/
 ├── app.py                  # Flask application entry point
 ├── config.py               # Configuration (DB, secret key)
 ├── models.py               # SQLAlchemy ORM models
