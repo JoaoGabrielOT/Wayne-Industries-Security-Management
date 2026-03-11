@@ -33,3 +33,48 @@ A interface foi escrita completamente sem frameworks de terceiros para priorizar
 * **Manipulação Limpa de DOM:** Para evitar sintaxes verbosas, utiliza-se a função utilitária `$` (wrapper para `querySelector`) e `$$` (para `querySelectorAll`).
 * **Prevenção de XSS na Interface:** Uma função auxiliar chamada `esc(s)` escapa qualquer string recebida do banco criando um Node de texto na memória e extraindo o `innerHTML`, sendo aplicada sistematicamente nas tabelas de dados do sistema.
 * **Controle de Acesso Dinâmico:** A barra de navegação principal é montada via JavaScript utilizando `buildNav(activeId)`. A função verifica o `currentUser.role` omitindo módulos críticos da UI se o papel não conferir. Padrão semelhante ocorre na construção das tabelas, limitando os botões de ação utilizando a função booleana `isManagerOrAdmin()`.
+
+---
+
+## 📡 Referência de Endpoints (API)
+
+A aplicação consome uma API RESTful interna. Todos os endpoints abaixo de `/api/` (exceto registro e login) exigem autenticação baseada em cookie de sessão.
+
+| Método | Endpoint                  | Permissão | Descrição                                      |
+|--------|---------------------------|-----------|------------------------------------------------|
+| POST   | `/api/auth/login`         | Público   | Autentica usuário e inicia sessão              |
+| POST   | `/api/auth/register`      | Público   | Cria uma nova conta (padrão: Employee)         |
+| POST   | `/api/auth/logout`        | Autent.   | Encerra a sessão do usuário                    |
+| GET    | `/api/auth/me`            | Autent.   | Retorna os dados e o papel do usuário logado   |
+| GET    | `/api/dashboard/stats`    | Autent.   | Consolida os dados estatísticos para o painel  |
+| GET    | `/api/resources?type=X`   | Autent.   | Lista recursos filtrados por tipo              |
+| POST   | `/api/resources`          | Manager+  | Cria um novo recurso                           |
+| PUT    | `/api/resources/<id>`     | Manager+  | Atualiza dados de um recurso existente         |
+| DELETE | `/api/resources/<id>`     | Admin     | Remove permanentemente um recurso              |
+| GET    | `/api/activity`           | Manager+  | Retorna a lista dos logs de atividade          |
+| GET    | `/api/users`              | Admin     | Lista todos os usuários cadastrados            |
+| PUT    | `/api/users/<id>/role`    | Admin     | Altera o nível de acesso (papel) de um usuário |
+
+---
+
+## 📁 Estrutura do Projeto
+```text
+├── app.py                  # Ponto de entrada da aplicação Flask
+├── config.py               # Configurações de ambiente (Banco e Chaves)
+├── middleware.py           # Decorators de autenticação (login/role required)
+├── models.py               # Modelos de dados do SQLAlchemy (ORM)
+├── requirements.txt        # Dependências do Python
+├── schema.sql              # Estrutura do banco de dados MySQL
+├── seed.py                 # Script para popular dados fictícios iniciais
+├── routes/                 # Controladores (Blueprints) da API
+│   ├── activity.py
+│   ├── auth.py
+│   ├── dashboard.py
+│   ├── resources.py
+│   └── users.py
+└── static/                 # Arquivos públicos (Frontend)
+    ├── common.css          # Estilos globais (Tema Gotham Dark)
+    ├── common.js           # Funções utilitárias e chamadas de API
+    ├── app-shell.html      # Estrutura base da Sidebar de navegação
+    └── ... (arquivos .html e .js individuais por página)
+```
