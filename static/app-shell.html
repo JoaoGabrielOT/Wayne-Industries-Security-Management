@@ -1,0 +1,36 @@
+<!-- 
+  This file is NOT served directly. It documents the shared app shell markup 
+  that is included in dashboard.html, resources.html, activity.html, users.html.
+  Copy this structure into each authenticated page.
+-->
+
+<!-- Mobile menu trigger -->
+<button id="mobile-menu-btn" class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+<div id="mobile-overlay" class="mobile-overlay hidden"></div>
+
+<!-- Sidebar -->
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">WI</div>
+    <div class="sidebar-title-wrap">
+      <h2 class="display-label">Wayne Industries</h2>
+      <p class="mono-label-xs">SECURITY SYSTEMS</p>
+    </div>
+    <button id="sidebar-close" class="btn-icon-inline sidebar-close-btn"><i data-lucide="x"></i></button>
+  </div>
+
+  <nav id="sidebar-nav" class="sidebar-nav"></nav>
+
+  <div class="sidebar-user">
+    <div class="sidebar-user-info">
+      <div id="user-avatar" class="avatar-sm">?</div>
+      <div class="sidebar-user-meta">
+        <p id="user-name" class="truncate">User</p>
+        <span id="user-role-badge" class="role-badge">EMPLOYEE</span>
+      </div>
+    </div>
+    <button id="btn-signout" class="btn btn-ghost btn-sm w-full" style="justify-content:flex-start;gap:8px;">
+      <i data-lucide="log-out" style="width:16px;height:16px;"></i> Sign Out
+    </button>
+  </div>
+</aside>

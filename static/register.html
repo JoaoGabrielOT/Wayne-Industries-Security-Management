@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — Wayne Industries Security Management System</title>
+  <meta name="description" content="Create a new account for Wayne Industries Security Management System." />
+  <link rel="stylesheet" href="/common.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div class="login-wrapper">
+    <div class="login-card animate-slide-in">
+      <div class="login-logo">
+        <div class="logo-icon"><i data-lucide="shield" class="icon-lg"></i></div>
+        <h1 class="display-text">Wayne Industries</h1>
+        <p class="mono-label">SECURITY MANAGEMENT SYSTEM</p>
+      </div>
+
+      <div class="card login-form-card">
+        <h2 class="display-label">CREATE ACCOUNT</h2>
+        <form id="register-form">
+          <div class="form-group">
+            <label class="mono-label" for="reg-name">FULL NAME</label>
+            <input type="text" id="reg-name" placeholder="Bruce Wayne" required />
+          </div>
+          <div class="form-group">
+            <label class="mono-label" for="reg-email">EMAIL</label>
+            <input type="email" id="reg-email" placeholder="bruce@wayne.com" required />
+          </div>
+          <div class="form-group">
+            <label class="mono-label" for="reg-password">PASSWORD</label>
+            <div class="input-password-wrap">
+              <input type="password" id="reg-password" placeholder="••••••••" required minlength="6" />
+              <button type="button" id="toggle-password" class="btn-icon-inline">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" id="reg-submit" class="btn btn-primary w-full">REGISTER</button>
+        </form>
+        <div class="login-switch">
+          <a href="/login.html" class="btn-link">Already have access? Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/common.js"></script>
+  <script src="/register.js"></script>
+</body>
+</html>

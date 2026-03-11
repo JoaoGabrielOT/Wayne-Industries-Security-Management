@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Wayne Industries Security Management System</title>
+  <meta name="description" content="Wayne Industries security dashboard overview." />
+  <link rel="stylesheet" href="/common.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div id="app-shell">
+    <!-- Mobile menu trigger -->
+    <button id="mobile-menu-btn" class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+    <div id="mobile-overlay" class="mobile-overlay hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">WI</div>
+        <div class="sidebar-title-wrap">
+          <h2 class="display-label">Wayne Industries</h2>
+          <p class="mono-label-xs">SECURITY SYSTEMS</p>
+        </div>
+        <button id="sidebar-close" class="btn-icon-inline sidebar-close-btn"><i data-lucide="x"></i></button>
+      </div>
+      <nav id="sidebar-nav" class="sidebar-nav"></nav>
+      <div class="sidebar-user">
+        <div class="sidebar-user-info">
+          <div id="user-avatar" class="avatar-sm">?</div>
+          <div class="sidebar-user-meta">
+            <p id="user-name" class="truncate">User</p>
+            <span id="user-role-badge" class="role-badge">EMPLOYEE</span>
+          </div>
+        </div>
+        <button id="btn-signout" class="btn btn-ghost btn-sm w-full" style="justify-content:flex-start;gap:8px;">
+          <i data-lucide="log-out" style="width:16px;height:16px;"></i> Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <div class="page-inner animate-slide-in">
+        <div>
+          <h1 id="dashboard-greeting" class="page-title">Welcome, Operative</h1>
+          <p class="mono-label">WAYNE INDUSTRIES — SECURITY DASHBOARD</p>
+        </div>
+        <div id="stats-grid" class="stats-grid"></div>
+        <div class="charts-grid">
+          <div class="card chart-card">
+            <h3 class="display-label">RESOURCES BY TYPE</h3>
+            <canvas id="chart-bar"></canvas>
+          </div>
+          <div class="card chart-card">
+            <h3 class="display-label">STATUS DISTRIBUTION</h3>
+            <canvas id="chart-pie"></canvas>
+          </div>
+        </div>
+        <div id="recent-activity-section" class="hidden">
+          <div class="card">
+            <h3 class="display-label" style="margin-bottom:16px;">RECENT ACTIVITY</h3>
+            <div id="recent-activity-list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/common.js"></script>
+  <script src="/dashboard.js"></script>
+</body>
+</html>

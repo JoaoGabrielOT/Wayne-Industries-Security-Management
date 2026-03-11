@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management — Wayne Industries Security Management System</title>
+  <meta name="description" content="Wayne Industries security admin panel for user role management." />
+  <link rel="stylesheet" href="/common.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div id="app-shell">
+    <button id="mobile-menu-btn" class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+    <div id="mobile-overlay" class="mobile-overlay hidden"></div>
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">WI</div>
+        <div class="sidebar-title-wrap">
+          <h2 class="display-label">Wayne Industries</h2>
+          <p class="mono-label-xs">SECURITY SYSTEMS</p>
+        </div>
+        <button id="sidebar-close" class="btn-icon-inline sidebar-close-btn"><i data-lucide="x"></i></button>
+      </div>
+      <nav id="sidebar-nav" class="sidebar-nav"></nav>
+      <div class="sidebar-user">
+        <div class="sidebar-user-info">
+          <div id="user-avatar" class="avatar-sm">?</div>
+          <div class="sidebar-user-meta">
+            <p id="user-name" class="truncate">User</p>
+            <span id="user-role-badge" class="role-badge">EMPLOYEE</span>
+          </div>
+        </div>
+        <button id="btn-signout" class="btn btn-ghost btn-sm w-full" style="justify-content:flex-start;gap:8px;">
+          <i data-lucide="log-out" style="width:16px;height:16px;"></i> Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-inner animate-slide-in">
+        <div>
+          <h1 class="page-title"><i data-lucide="users" class="icon-inline"></i> User Management</h1>
+          <p class="mono-label">SECURITY ADMIN PANEL</p>
+        </div>
+        <div id="users-loading" class="loading-center hidden"><div class="spinner"></div></div>
+        <div id="users-table-wrap" class="hidden">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="mono-label-xs">USER</th>
+                  <th class="mono-label-xs">CURRENT ROLE</th>
+                  <th class="mono-label-xs text-right">CHANGE ROLE</th>
+                </tr>
+              </thead>
+              <tbody id="users-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/common.js"></script>
+  <script src="/users.js"></script>
+</body>
+</html>

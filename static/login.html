@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Wayne Industries Security Management System</title>
+  <meta name="description" content="Wayne Industries internal security and resource management platform for Gotham City operations." />
+  <link rel="stylesheet" href="/common.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div class="login-wrapper">
+    <div class="login-card animate-slide-in">
+      <div class="login-logo">
+        <div class="logo-icon"><i data-lucide="shield" class="icon-lg"></i></div>
+        <h1 class="display-text">Wayne Industries</h1>
+        <p class="mono-label">SECURITY MANAGEMENT SYSTEM</p>
+      </div>
+
+      <div class="card login-form-card">
+        <h2 id="login-title" class="display-label">SYSTEM ACCESS</h2>
+        <form id="login-form">
+          <div id="register-name-group" class="form-group hidden">
+            <label class="mono-label" for="login-name">FULL NAME</label>
+            <input type="text" id="login-name" placeholder="Bruce Wayne" />
+          </div>
+          <div class="form-group">
+            <label class="mono-label" for="login-email">EMAIL</label>
+            <input type="email" id="login-email" placeholder="bruce@wayne.com" required />
+          </div>
+          <div class="form-group">
+            <label class="mono-label" for="login-password">PASSWORD</label>
+            <div class="input-password-wrap">
+              <input type="password" id="login-password" placeholder="••••••••" required minlength="6" />
+              <button type="button" id="toggle-password" class="btn-icon-inline">
+                <i data-lucide="eye" id="eye-icon"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" id="login-submit" class="btn btn-primary w-full">LOGIN</button>
+        </form>
+        <div class="login-switch">
+          <button type="button" id="toggle-register" class="btn-link">Request new access? Register</button>
+        </div>
+      </div>
+
+      <div class="card card-muted login-credentials">
+        <p class="mono-label" style="margin-bottom:6px;">TEST CREDENTIALS</p>
+        <p><span class="text-primary">Admin:</span> admin@wayne.com / wayne123</p>
+        <p><span class="text-accent">Manager:</span> manager@wayne.com / wayne123</p>
+        <p><span class="text-muted-fg">Employee:</span> employee@wayne.com / wayne123</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/common.js"></script>
+  <script src="/login.js"></script>
+</body>
+</html>

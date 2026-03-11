@@ -1,11 +1,13 @@
 """Seed script: creates test users and sample resources."""
 from app import app
 from models import db, User, UserRole, Resource
+
 SEED_USERS = [
     {"email": "admin@wayne.com", "password": "wayne123", "full_name": "Bruce Wayne", "role": "security_admin"},
     {"email": "manager@wayne.com", "password": "wayne123", "full_name": "Lucius Fox", "role": "manager"},
     {"email": "employee@wayne.com", "password": "wayne123", "full_name": "Tim Drake", "role": "employee"},
 ]
+
 SEED_RESOURCES = [
     # Equipment
     {"name": "Batarangs (Set A)", "type": "equipment", "status": "active", "location": "Batcave", "description": "Standard throwing batarangs, set of 12"},
@@ -29,8 +31,10 @@ SEED_RESOURCES = [
     {"name": "Drone Patrol Unit 1", "type": "security_device", "status": "maintenance", "location": "R&D Lab", "description": "Autonomous perimeter surveillance drone"},
     {"name": "Comm Jammer Portable", "type": "security_device", "status": "available", "location": "Armory", "description": "Portable RF communications jammer"},
 ]
+
 with app.app_context():
     db.create_all()
+
     for u_data in SEED_USERS:
         existing = User.query.filter_by(email=u_data["email"]).first()
         if existing:
@@ -43,11 +47,13 @@ with app.app_context():
         role = UserRole(user_id=user.id, role=u_data["role"])
         db.session.add(role)
         print(f"  Created user: {u_data['email']} ({u_data['role']})")
+
     for r_data in SEED_RESOURCES:
         existing = Resource.query.filter_by(name=r_data["name"]).first()
         if existing:
             continue
         resource = Resource(**r_data)
         db.session.add(resource)
+
     db.session.commit()
     print("Seed complete!")

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — Wayne Industries Security Management System</title>
+  <meta name="description" content="Wayne Industries equipment and resource inventory management." />
+  <link rel="stylesheet" href="/common.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div id="app-shell">
+    <button id="mobile-menu-btn" class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+    <div id="mobile-overlay" class="mobile-overlay hidden"></div>
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">WI</div>
+        <div class="sidebar-title-wrap">
+          <h2 class="display-label">Wayne Industries</h2>
+          <p class="mono-label-xs">SECURITY SYSTEMS</p>
+        </div>
+        <button id="sidebar-close" class="btn-icon-inline sidebar-close-btn"><i data-lucide="x"></i></button>
+      </div>
+      <nav id="sidebar-nav" class="sidebar-nav"></nav>
+      <div class="sidebar-user">
+        <div class="sidebar-user-info">
+          <div id="user-avatar" class="avatar-sm">?</div>
+          <div class="sidebar-user-meta">
+            <p id="user-name" class="truncate">User</p>
+            <span id="user-role-badge" class="role-badge">EMPLOYEE</span>
+          </div>
+        </div>
+        <button id="btn-signout" class="btn btn-ghost btn-sm w-full" style="justify-content:flex-start;gap:8px;">
+          <i data-lucide="log-out" style="width:16px;height:16px;"></i> Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-inner animate-slide-in">
+        <div class="page-header-row">
+          <div>
+            <h1 id="resources-title" class="page-title"><i data-lucide="package" class="icon-inline"></i> Equipment Inventory</h1>
+            <p id="resources-count" class="mono-label">0 item(s) registered</p>
+          </div>
+          <button id="btn-add-resource" class="btn btn-primary hidden" style="gap:8px;">
+            <i data-lucide="plus" style="width:16px;height:16px;"></i> <span id="btn-add-resource-label">ADD EQUIPMENT</span>
+          </button>
+        </div>
+        <div id="resources-loading" class="loading-center hidden"><div class="spinner"></div></div>
+        <div id="resources-empty" class="empty-state hidden">
+          <i data-lucide="package" class="icon-xl text-muted-fg" style="opacity:0.3;"></i>
+          <p class="text-muted-fg">No items registered yet.</p>
+        </div>
+        <div id="resources-table-wrap" class="hidden">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="mono-label-xs">NAME</th>
+                  <th class="mono-label-xs">STATUS</th>
+                  <th class="mono-label-xs hidden-sm">LOCATION</th>
+                  <th class="mono-label-xs hidden-md">DESCRIPTION</th>
+                  <th class="mono-label-xs hidden-lg">UPDATED</th>
+                  <th id="th-actions" class="mono-label-xs text-right hidden">ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody id="resources-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Resource Dialog -->
+  <div id="resource-dialog-overlay" class="dialog-overlay hidden">
+    <div class="dialog-content card">
+      <h3 id="resource-dialog-title" class="display-label" style="margin-bottom:16px;">NEW EQUIPMENT</h3>
+      <div class="form-group">
+        <label class="mono-label" for="res-name">NAME</label>
+        <input type="text" id="res-name" placeholder="e.g. Batmobile MK-III" />
+      </div>
+      <div class="form-group">
+        <label class="mono-label" for="res-status">STATUS</label>
+        <select id="res-status">
+          <option value="active">ACTIVE</option>
+          <option value="inactive">INACTIVE</option>
+          <option value="available" selected>AVAILABLE</option>
+          <option value="in_use">IN USE</option>
+          <option value="maintenance">MAINTENANCE</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="mono-label" for="res-location">LOCATION</label>
+        <input type="text" id="res-location" placeholder="e.g. Batcave" value="Wayne Tower" />
+      </div>
+      <div class="form-group">
+        <label class="mono-label" for="res-description">DESCRIPTION</label>
+        <input type="text" id="res-description" placeholder="Optional description" />
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button id="res-dialog-cancel" class="btn btn-ghost" style="flex:1;">CANCEL</button>
+        <button id="res-dialog-save" class="btn btn-primary" style="flex:1;">CREATE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/common.js"></script>
+  <script src="/resources.js"></script>
+</body>
+</html>
